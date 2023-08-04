@@ -1,0 +1,26 @@
+<%- include("./partials/header"); -%>
+
+    <h1>Home</h1>
+    <p>
+        <%= homeContent %>
+    </p>
+    <h1>Blogs <span>
+            <%=postThiscont.length%>
+        </span></h1>
+    <hr>
+
+    <% for (let i=0; i <postThiscont.length; i++) { %>
+        <h1>
+            <%= postThiscont[i].title %> <span>
+                    <%= date%>
+                </span>
+        </h1>
+        <p>
+            <%= postThiscont[i].content.substring(0,300)+" ...." %>
+                <a href="/posts/<%= postThiscont[i].title %>">Read more</a>
+
+        </p>
+        <hr>
+        <% } %>
+
+            <%- include("./partials/footer"); -%>

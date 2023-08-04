@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Today is </title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<!-- <style>
+    body {
+        background-color: black;
+        color: white;
+        display: flex;
+        flex-direction: column;
+
+        align-items: center;
+
+    }
+
+    form {
+
+        margin-top: 20px;
+        border-radius: 10px;
+    }
+
+    li {
+        background-color: rgb(56, 62, 34);
+        padding: 10px;
+        margin: 5px;
+        border-radius: 5px;
+        padding-left: 15px;
+        list-style: none;
+        border: 2px solid rgb(214, 214, 138);
+        font-family: sans-serif;
+    }
+
+    input[type=text] {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
+    }
+
+    button {
+        width: 100%;
+        padding: 10px;
+        background-color: rgb(113, 113, 8);
+        color: white;
+        font-size: 20px;
+        border: 2px solid rgb(196, 196, 101);
+    }
+
+    .container {
+        width: 400px;
+    }
+</style> -->
+
+<body>
+    <div class="box" id="heading">
+        <h1>
+            <%= kindOfday %>
+        </h1>
+    </div>
+
+    <div class="box">
+        <% for (let i=0; i <newListItems.length; i++) { %>
+            <div class="item">
+                <input type="checkbox">
+                <p>
+                    <%= newListItems[i] %>
+                </p>
+            </div>
+            <% } %>
+
+
+                <form action="/" method="post" class="item">
+
+                    <input type="text" name="newItem" id="todo" placeholder="What to Do ?" autocomplete="off">
+                    <div>
+                        <button type="submit">+</button>
+                    </div>
+                </form>
+    </div>
+
+</body>
+
+</html>
