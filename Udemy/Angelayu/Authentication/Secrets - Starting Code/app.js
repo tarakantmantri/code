@@ -1,14 +1,18 @@
 //jshint esversion:6
 require("dotenv").config(); //Environment variable
-const express = require('express')
-const bodyParser = require("body-parser")
+const express = require('express') // adds express
+const bodyParser = require("body-parser") //adds bodey parser
 const ejs = require("ejs");
+const session = require("express-session")
+const passport = require("passport")
+const passportLocalMongoose = require("passport-local-mongoose")
+
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/userDB', { useNewUrlParser: true });
+
 // var encrypt = require('mongoose-encryption');//encryption plugin
 // const md5 = require('md5') //md5 Hash Generator
-const bcrypt = require("bcrypt")
-const saltRounds = 2;
+// const bcrypt = require("bcrypt")
+// const saltRounds = 2;
 
 const app = express()
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -16,7 +20,14 @@ app.set("view engine", "ejs")
 app.use(express.static("public")) //hosts all file on Public Folder
 const port = 3000
 
+app.use(session({
+    secret: 'My little secret',
+    resave: false,
+    saveUninitialized: false,
+    cookie: { secure: true }
+}))
 
+mongoose.connect('mongodb://localhost:27017/userDB', { useNewUrlParser: true });
 //defining Schema used for encrypt
 const userSchema = new mongoose.Schema({
     email: String,
@@ -44,47 +55,15 @@ app.get('/', (req, res) => {
 app.get('/register', (req, res) => {
     res.render("register")
 })
-app.post('/register', (req, res) => {
-    bcrypt.hash(req.body.password, saltRounds, function (err, hash) {
-        // Store hash in your password DB.
-        let newUser = new User({
-            email: req.body.username,
-            password: hash
-        })
-        newUser.save().then((data) => {
-            console.log(data)
-            res.render('secrets')
-        }).catch((err) => {
-            console.log(err)
-        })
-    });
 
+app.post('/register', (req, res) => {
 
 })
 app.get('/login', (req, res) => {
     res.render("login")
 })
+
 app.post('/login', (req, res) => {
-    const username = req.body.username;
-    const password = req.body.password;
-    User.findOne({ email: username }).then((data) => { //it finds and decripts 
-        console.log(data);
-        if (data) {
-            bcrypt.compare(password, data.password, function (err, result) {
-                if (result) {
-                    res.render("secrets")
-                } else {
-                    res.render("Incorect")
-                }
-            });
-        } else {
-            console.log("Email Not Found")
-            res.render("Incorect")
-        }
-    }).catch((err) => {
-        console.log(err)
-        res.send("error Happend")
-    })
 })
 
 app.get("/logout", (req, res) => {
