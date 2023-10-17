@@ -1,0 +1,74 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+.head{
+    padding: 10px;
+    margin-bottom: 50px;
+    text-align: center;
+}
+.container{
+    background-color: aliceblue;
+    border: 2px dotted black;
+    padding: 5px;
+    /* this will create a flexbox */
+    display: flex; 
+    /*  this will activate wrap defult no-wrap*/
+    flex-wrap: wrap;
+    /* this will change the direction */
+    flex-direction: row;
+    /* this will align content on main axix */
+    justify-content: flex-start;
+    /* this will align on cross axis */
+    align-items: stretch;
+    /* if using multiline comntainer in cross axix */
+    align-content: center;
+
+}
+
+.flex-items{
+    height: 100px;
+}
+
+.one{
+    background-color: aquamarine;
+    padding: 5px;
+    height: 50px;
+/* This will prevent it tpo shrink */
+flex-shrink: 0;
+order:2
+}
+.two{
+    background-color: rgb(127, 255, 161);
+    padding: 5px;
+    height: 40px;
+     /* this will grow to fill up the extra space if any */
+     flex-grow: 2;
+     /* this will reset the width property of the div */
+     flex-basis: 0;
+     /* this will make this one the 1st item  dont use*/
+     order:1;
+}
+.three{
+    background-color: rgb(180, 255, 127);
+    padding: 5px;
+    /* this will control if it going to shrink or not. 0 will be overflow 1is defult*/
+    /* flex-shrink: 1; */
+    height: 100px;
+    /* this will grow to fill up the extra space if any */
+    flex-grow: 1;
+    order:3;
+}
+.four{
+    background-color: rgb(229, 255, 127);
+    padding: 5px;
+    height: 100px;
+}
+.five{
+    background-color: rgb(255, 225, 127);
+    padding: 5px;
+}
+.six{
+    background-color: rgb(255, 146, 127);
+    padding: 5px;
+}

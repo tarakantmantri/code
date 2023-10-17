@@ -1,0 +1,16 @@
+.parent{
+    background-color: hsla(200, 100%, 20%);
+    height: 400px;
+    width: 400px;
+}
+.child{
+    background-color: red;
+    height: 50%;
+    width: 50%;
+    transition: 1s cubic-bezier(1, 0, 0, 1);
+}
+
+.parent:hover .child{
+    transform: translateX(100%);
+    background-color: blueviolet;
+}

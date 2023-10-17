@@ -1,0 +1,38 @@
+.grid-item{
+    background-color: aquamarine;
+    height: 100px;
+    border: 1px dashed ;
+
+}
+
+.grid-container{
+    /* this will create a grid */
+    display: grid;
+    /* this will define the sizes */
+    grid-template-columns: repeat(3, 1fr)
+}
+.box{
+border: 1px dashed blue;
+display: grid;
+grid-template-columns: repeat(5, 1fr);
+grid-template-rows: repeat(5, 1fr);
+
+}
+
+.pani{
+background-color: aqua;
+min-height: 100px;
+min-width: 100px;
+grid-column-start: 1;
+grid-column-end: 5;
+}
+.gajar{
+height: 100px;
+width: 100px;
+background-color: orange;
+}
+div{
+    border: 1px dashed green;
+    min-height: 100px;
+    min-width: 100px;
+}
